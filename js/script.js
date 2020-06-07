@@ -1,18 +1,61 @@
-//player
-let playerInput = prompt('Wybierz swój ruch! 1: kamień, 2: papier, 3: nożyce.');
+//var
+let playerMove;
+let randomNumber;
+let computerMove;
+let scorePlayer = 0;
+let scoreComputer = 0;
+let whichRound = 1;
+const roundH1 = document.getElementById('welcom-in-game');
+const scorePlayerH3 = document.getElementById('player-score');
+const scoreComputerH3 = document.getElementById('computer-score');
+const playerH4 = document.getElementById('player-move');
+const computerH4 = document.getElementById('computer-move');
 
-let playerMove = getMoveName (playerInput);
+//start
+document.getElementById('click-start').addEventListener('click', function () {
+    document.getElementById('player-move').hidden = false;
+    document.getElementById('computer-move').hidden = false;
+    document.getElementById('click-start').hidden = true;
+    document.getElementById('click-stone').hidden = false;
+    document.getElementById('click-Paper').hidden = false;
+    document.getElementById('click-scissors').hidden = false;
+    document.getElementById('player-score').hidden = false;
+    document.getElementById('computer-score').hidden = false;
+    roundH1.innerHTML = 'Runda : ' + whichRound;
+    scorePlayerH3.innerHTML = 'Gracz : ' + scorePlayer;
+    scoreComputerH3.innerHTML = 'Komputer : ' + scoreComputer;
+});
+//ruchy
+document.getElementById('click-stone').addEventListener('click', function () {
+    playerMove = 'kamień';
+    movePKN();
 
-printMessage('Twój ruch to : ' + playerMove);
+});
+document.getElementById('click-Paper').addEventListener('click', function () {
+    playerMove = 'papier';
+    movePKN();
+});
 
-let randomNumber = Math.floor(Math.random() * 3 + 1);
+document.getElementById('click-scissors').addEventListener('click', function () {
+    playerMove = 'nożyce';
+    movePKN();
+});
 
-let computerMove = getMoveName (randomNumber);
-
-printMessage('Mój ruch to : ' + computerMove);
-
-// let whoWins = displayResult (computerMove, playerMove)
-//
-// printMessage('Wynik gry to  : ' + whoWins);
-
-printMessage('Wynik gry to  : ' +  displayResult (computerMove, playerMove));
+//nowa gra
+document.getElementById('click-new-game').addEventListener('click', function () {
+    document.getElementById('player-move').hidden = true;
+    document.getElementById('computer-move').hidden = true;
+    document.getElementById('click-start').hidden = false;
+    document.getElementById('click-stone').hidden = true;
+    document.getElementById('click-Paper').hidden = true;
+    document.getElementById('click-scissors').hidden = true;
+    document.getElementById('player-score').hidden = true;
+    document.getElementById('computer-score').hidden = true;
+    document.getElementById('click-new-game').hidden = true;
+    roundH1.innerHTML = 'Cześć witaj ponownie';
+    scorePlayerH3.innerHTML = 'Gracz : 0';
+    scoreComputerH3.innerHTML = 'Komputer : 0';
+    scorePlayer = 0;
+    scoreComputer = 0;
+    whichRound = 1;
+})

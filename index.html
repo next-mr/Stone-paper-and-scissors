@@ -1,16 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>Kamień, papier, nożyce</title>
-	<link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8">
+    <title>Kamień, papier, nożyce</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-	<div class="container">
-		<div id="buttons"></div>
-		<div id="messages"></div>
-	</div>
-	<script src="js/functions.js"></script>
-	<script src="js/script.js"></script>
+<div class="container">
+    <h1 id="welcom-in-game">Cześć witaj w grze PKM</h1>
+    <button id="click-start">Rozpocznij grę</button>
+    <button id="click-new-game" hidden>Nowa Gra</button>
+    <button id="click-stone" hidden>Kamień</button>
+    <button id="click-Paper" hidden>Papier</button>
+    <button id="click-scissors" hidden>Nożyczki</button>
+    <h4 id="player-move" hidden>Ruch gracz : Wybierz</h4>
+    <h4 id="computer-move" hidden>Ruch komputer : Losuje</h4>
+    <h3 id="player-score" hidden>Gracz : 0</h3>
+    <h3 id="computer-score" hidden>Komputer : 0</h3>
+</div>
+<script src="js/functions.js"></script>
+<script src="js/script.js"></script>
 </body>
 </html>
