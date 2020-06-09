@@ -1,13 +1,13 @@
 function getMoveName(argMoveId) {
 
     if (argMoveId == 1) {
-        document.getElementById('img-stone-pc').hidden = false;
+        document.querySelector('img-stone-pc').hidden = false;
         return 'kamień';
     } else if (argMoveId == 2) {
-        document.getElementById('img-paper-pc').hidden = false;
+        document.querySelector('img-paper-pc').hidden = false;
         return 'papier';
     } else if (argMoveId == 3) {
-        document.getElementById('img-scissors-pc').hidden = false;
+        document.querySelector('img-scissors-pc').hidden = false;
         return 'nożyce';
     }
 
@@ -48,25 +48,25 @@ function movePKN() {
         }
         scorePlayerH3.innerHTML = 'Gracz : ' + scorePlayer;
         scoreComputerH3.innerHTML = 'Komputer : ' + scoreComputer;
-        document.getElementById('img-user-vs-cpu').hidden = false;
+        document.querySelector('img-user-vs-cpu').hidden = false;
 
         whichRound++;
         setTimeout(() => {
             roundH1.innerHTML = 'Runda : ' + whichRound;
-            document.getElementById('click-stone').hidden = false;
-            document.getElementById('click-Paper').hidden = false;
-            document.getElementById('click-scissors').hidden = false;
-            document.getElementById('img-stone-pc').hidden = true;
-            document.getElementById('img-paper-pc').hidden = true;
-            document.getElementById('img-scissors-pc').hidden = true;
-            document.getElementById('img-user-vs-cpu').hidden = true;
+            document.querySelector('click-stone').hidden = false;
+            document.querySelector('click-Paper').hidden = false;
+            document.querySelector('click-scissors').hidden = false;
+            document.querySelector('img-stone-pc').hidden = true;
+            document.querySelector('img-paper-pc').hidden = true;
+            document.querySelector('img-scissors-pc').hidden = true;
+            document.querySelector('img-user-vs-cpu').hidden = true;
             if (whichRound >= 4) {
-                document.getElementById('computer-vs-player').hidden = false;
-                document.getElementById('click-stone').hidden = true;
-                document.getElementById('click-Paper').hidden = true;
-                document.getElementById('click-scissors').hidden = true;
-                document.getElementById('click-new-game').hidden = false;
-                document.getElementById('img-all').hidden = false;
+                document.querySelector('computer-vs-player').hidden = false;
+                document.querySelector('click-stone').hidden = true;
+                document.querySelector('click-Paper').hidden = true;
+                document.querySelector('click-scissors').hidden = true;
+                document.querySelector('click-new-game').hidden = false;
+                document.querySelector('img-all').hidden = false;
                 roundH1.innerHTML = 'Koniec gry';
                 if (scorePlayer < scoreComputer) {
                     computerCsPlayerH4.innerHTML = 'Wygrał ! Komputer !';
