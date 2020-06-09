@@ -1,7 +1,7 @@
 //var
 let playerMove;
-let randomNumber;
-let computerMove;
+// let randomNumber;
+// let computerMove;
 let scorePlayer = 0;
 let scoreComputer = 0;
 let whichRound = 1;

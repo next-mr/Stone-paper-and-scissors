@@ -35,8 +35,8 @@ function movePKN() {
     if (whichRound <= 3) {
         roundH1.innerHTML = 'Runda : ' + whichRound;
 
-        randomNumber = Math.floor(Math.random() * 3 + 1);
-        computerMove = getMoveName(randomNumber);
+       const randomNumber = Math.floor(Math.random() * 3 + 1);
+       const computerMove = getMoveName(randomNumber);
 
         if (displayResult(computerMove, playerMove) === 'Wygrałeś!') {
             scorePlayer++;
