@@ -1,70 +1,170 @@
-//var
-let playerMove;
+//VAR
+
 let scorePlayer = 0;
 let scoreComputer = 0;
 let whichRound = 1;
-const roundH1 = document.querySelector( '#welcom-in-game');
-const scorePlayerH3 = document.querySelector('#player-score');
-const scoreComputerH3 = document.querySelector('#computer-score');
-const computerCsPlayerH4 = document.querySelector('#computer-vs-player');
-const clickStartId = document.querySelector('#click-start');
-const clickStoneId = document.querySelector('#click-stone');
-const clickPaperId = document.querySelector('#click-paper');
-const clickScissorsId = document.querySelector('#click-scissors');
-const clickNewGameId = document.querySelector('#click-new-game');
+const welcomeInGameId = document.querySelector('#welcome-in-game');
+const imgAllId = document.querySelector('#img-all');
+const btnClickStartId = document.querySelector('#btn-click-start');
+const btnClickNewGameId = document.querySelector('#btn-click-new-game');
+const btnClickStoneId = document.querySelector('#btn-click-stone');
+const btnClickPaperId = document.querySelector('#btn-click-paper');
+const btnClickScissorsId = document.querySelector('#btn-click-scissors');
+const imgUserVsCpuId = document.querySelector('#img-user-vs-cpu');
+const imgStonePcId = document.querySelector('#img-stone-pc');
+const imgPaperPcId = document.querySelector('#img-paper-pc');
+const imgScissorsPcId = document.querySelector('#img-scissors-pc');
+const computerVsPlayerId = document.querySelector('#computer-vs-player');
+const scoresOfId = document.querySelector('#scores-of');
+const playerScoreId = document.querySelector('#player-score');
+const computerScoreId = document.querySelector('#computer-score');
 
-//start
-clickStartId.addEventListener('click', function () {
-    document.querySelector('button').hidden = false;
-    document.querySelector('#computer-vs-player').hidden = false;
-    document.querySelector('#click-start').hidden = true;
-    document.querySelector('#click-stone').hidden = false;
-    document.querySelector('#click-paper').hidden = false;
-    document.querySelector('#click-scissors').hidden = false;
-    document.querySelector('#player-score').hidden = false;
-    document.querySelector('#computer-score').hidden = false;
-    document.querySelector('#img-all').hidden = true;
-    roundH1.innerHTML = 'Runda : ' + whichRound;
-    scorePlayerH3.innerHTML = 'Gracz : ' + scorePlayer;
-    scoreComputerH3.innerHTML = 'Komputer : ' + scoreComputer;
+
+//START
+
+btnClickStartId.addEventListener('click', function () {
+    allOff();
+    startGame();
 });
 //move
-clickStoneId.addEventListener('click', function () {
-    playerMove = 'kamień';
-    document.querySelector('#click-paper').hidden = true;
-    document.querySelector('#click-scissors').hidden = true;
-    movePKN();
-
+btnClickStoneId.addEventListener('click', function () {
+    btnClickPaperId.classList.toggle('off');
+    btnClickScissorsId.classList.toggle('off');
+    moveGame('kamień');
+    nextRound();
 });
-clickPaperId.addEventListener('click', function () {
-    playerMove = 'papier';
-    document.querySelector('#click-stone').hidden = true;
-    document.querySelector('#click-scissors').hidden = true;
-    movePKN();
+btnClickPaperId.addEventListener('click', function () {
+    btnClickStoneId.classList.toggle('off');
+    btnClickScissorsId.classList.toggle('off');
+    moveGame('papier');
+    nextRound();
 });
-
-clickScissorsId.addEventListener('click', function () {
-    playerMove = 'nożyce';
-    document.querySelector('#click-paper').hidden = true;
-    document.querySelector('#click-stone').hidden = true;
-    movePKN();
+btnClickScissorsId.addEventListener('click', function () {
+    btnClickStoneId.classList.toggle('off');
+    btnClickPaperId.classList.toggle('off');
+    moveGame('nożyce');
+    nextRound();
 });
 
 //new game
-clickNewGameId.addEventListener('click', function () {
-    document.querySelector('#computer-vs-player').hidden = true;
-    document.querySelector('#click-start').hidden = false;
-    document.querySelector('#click-stone').hidden = true;
-    document.querySelector('#click-paper').hidden = true;
-    document.querySelector('#click-scissors').hidden = true;
-    document.querySelector('#player-score').hidden = true;
-    document.querySelector('#computer-score').hidden = true;
-    document.querySelector('#click-new-game').hidden = true;
-    roundH1.innerHTML = 'Cześć witaj ponownie';
-    scorePlayerH3.innerHTML = 'Gracz : 0';
-    scoreComputerH3.innerHTML = 'Komputer : 0';
-    computerCsPlayerH4.innerHTML = '';
+btnClickNewGameId.addEventListener('click', function () {
+    allOff();
+    resetGame();
+    startGame();
+});
+
+//FUNCTION
+
+function allOff() {
+    welcomeInGameId.classList.add('off');
+    imgAllId.classList.add('off');
+    btnClickStartId.classList.add('off');
+    btnClickNewGameId.classList.add('off');
+    btnClickStoneId.classList.add('off');
+    btnClickPaperId.classList.add('off');
+    btnClickScissorsId.classList.add('off');
+    imgUserVsCpuId.classList.add('off');
+    imgStonePcId.classList.add('off');
+    imgPaperPcId.classList.add('off');
+    imgScissorsPcId.classList.add('off');
+    computerVsPlayerId.classList.add('off');
+    scoresOfId.classList.add('off');
+}
+
+function startGame() {
+    welcomeInGameId.classList.remove('off');
+    welcomeInGameId.innerHTML = 'Runda : ' + whichRound;
+    btnClickStoneId.classList.remove('off');
+    btnClickPaperId.classList.remove('off');
+    btnClickScissorsId.classList.remove('off');
+    scoresOfId.classList.remove('off');
+    playerScoreId.innerHTML = 'Gracz : ' + scorePlayer;
+    computerScoreId.innerHTML = 'Komputer : ' + scoreComputer;
+}
+
+function getMoveComp(argMoveComp) {
+    imgUserVsCpuId.classList.toggle('off');
+    if (argMoveComp == 1) {
+        imgStonePcId.classList.toggle('off');
+        return 'kamień';
+    } else if (argMoveComp == 2) {
+        imgPaperPcId.classList.toggle('off');
+        return 'papier';
+    } else if (argMoveComp == 3) {
+        imgScissorsPcId.classList.toggle('off');
+        return 'nożyce';
+    }
+}
+
+function moveGame(argPlayerMove) {
+    const randomNumber = Math.floor(Math.random() * 3 + 1);
+    const computerMove = getMoveComp(randomNumber);
+    scoreUserOrComp(computerMove, argPlayerMove);
+}
+
+function scoreUserOrComp(argComputerMove, argPlayerMove) {
+    if (displayResult(argComputerMove, argPlayerMove) === 'Wygrałeś!') {
+        scorePlayer++;
+    } else if (displayResult(argComputerMove, argPlayerMove) === 'Przegrałeś!') {
+        scoreComputer++;
+    } else {
+        scorePlayer++;
+        scoreComputer++;
+    }
+}
+
+function displayResult(argComputerMove, argPlayerMove) {
+    if ((argComputerMove == 'kamień' && argPlayerMove == 'papier') ||
+        (argComputerMove == 'papier' && argPlayerMove == 'nożyce') ||
+        (argComputerMove == 'nożyce' && argPlayerMove == 'kamień')) {
+        return 'Wygrałeś!';
+    } else if ((argComputerMove == 'papier' && argPlayerMove == 'kamień') ||
+        (argComputerMove == 'nożyce' && argPlayerMove == 'papier') ||
+        (argComputerMove == 'kamień' && argPlayerMove == 'nożyce')) {
+        return 'Przegrałeś!';
+
+    } else {
+        return 'Remis!';
+    }
+}
+
+function nextRound() {
+    welcomeInGameId.innerHTML = 'Runda : ' + whichRound;
+    playerScoreId.innerHTML = 'Gracz : ' + scorePlayer;
+    computerScoreId.innerHTML = 'Komputer : ' + scoreComputer;
+    setTimeout(() => {
+        whichRound++;
+        if (whichRound <= 3) {
+            welcomeInGameId.innerHTML = 'Runda : ' + whichRound;
+            imgUserVsCpuId.classList.toggle('off');
+            imgStonePcId.classList.add('off');
+            imgPaperPcId.classList.add('off');
+            imgScissorsPcId.classList.add('off');
+            btnClickStoneId.classList.remove('off');
+            btnClickPaperId.classList.remove('off');
+            btnClickScissorsId.classList.remove('off');
+        } else endGame();
+    }, 1000);
+}
+
+function endGame() {
+    allOff();
+    welcomeInGameId.classList.remove('off');
+    welcomeInGameId.innerHTML = 'Koniec gry';
+    computerVsPlayerId.classList.remove('off');
+    if (scorePlayer < scoreComputer) {
+        computerVsPlayerId.innerHTML = 'Wygrał ! Komputer !';
+    } else if (scorePlayer > scoreComputer) {
+        computerVsPlayerId.innerHTML = 'Wygrał ! Gracz !';
+    } else {
+        computerVsPlayerId.innerHTML = '! R E M I S !';
+    }
+    scoresOfId.classList.remove('off');
+    btnClickNewGameId.classList.remove('off');
+}
+
+function resetGame() {
     scorePlayer = 0;
     scoreComputer = 0;
     whichRound = 1;
-});
+}

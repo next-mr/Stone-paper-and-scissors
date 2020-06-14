@@ -8,27 +8,31 @@
 <body>
 <div class="container">
     <div class="header">
-        <h1 id="welcom-in-game">Witaj w grze Papier Kamień Nożyce</h1>
+        <h1 id="welcome-in-game">Witaj w grze Papier Kamień Nożyce</h1>
         <img id="img-all" src="./images/wszyscy.png" alt="Wszyscy">
     </div>
     <div class="main">
-        <button id="click-start">Rozpocznij grę</button>
-        <button id="click-new-game" hidden>Nowa Gra</button>
-        <button id="click-stone" hidden><img src="./images/kamien%20user.png" alt="Kamien"></button>
-        <button id="click-paper" hidden><img src="./images/papier%20user.png" alt="Papier"></button>
-        <button id="click-scissors" hidden><img src="./images/nozyce%20user.png" alt="Nozyczki"></button>
-        <img id="img-user-vs-cpu" src="./images/user%20vs%20cpu.png" alt="stone" hidden>
-        <img id="img-stone-pc" src="./images/kamien%20pc.png" alt="stone" hidden>
-        <img id="img-paper-pc" src="./images/papier%20pc.png" alt="papier" hidden>
-        <img id="img-scissors-pc" src="./images/nozyce%20pc.png" alt="nozyce" hidden>
-        <h4 id="computer-vs-player" hidden></h4>
-        <div class="main__score">
-            <h3 id="player-score" hidden>Gracz : 0</h3>
-            <h3 id="computer-score" hidden>Komputer : 0</h3>
+        <button id="btn-click-start">Rozpocznij grę</button>
+        <button id="btn-click-new-game" class="off">Nowa Gra</button>
+
+        <button id="btn-click-stone" class="off"><img src="./images/kamien%20user.png" alt="Kamien"></button>
+        <button id="btn-click-paper" class="off"><img src="./images/papier%20user.png" alt="Papier"></button>
+        <button id="btn-click-scissors" class="off"><img src="./images/nozyce%20user.png" alt="Nozyczki"></button>
+
+        <img id="img-user-vs-cpu" src="./images/user%20vs%20cpu.png" alt="userorcpu" class="off">
+
+        <img id="img-stone-pc" src="./images/kamien%20pc.png" alt="stone" class="off">
+        <img id="img-paper-pc" src="./images/papier%20pc.png" alt="papier" class="off">
+        <img id="img-scissors-pc" src="./images/nozyce%20pc.png" alt="nozyce" class="off">
+
+        <h4 id="computer-vs-player" class="off"></h4>
+
+        <div id="scores-of" class="main__score off">
+            <h3 id="player-score">Gracz : 0</h3>
+            <h3 id="computer-score">Komputer : 0</h3>
         </div>
     </div>
 </div>
-<script src="./js/functions.js"></script>
 <script src="./js/script.js"></script>
 </body>
 </html>

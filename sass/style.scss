@@ -12,7 +12,7 @@
   background: RGB(247, 213, 64);
   display: flex;
   flex-direction: column;
-justify-content: center;
+  justify-content: center;
 }
 
 //Start
@@ -33,6 +33,7 @@ justify-content: center;
 
 .main {
   text-align: center;
+
   h4 {
     font-size: 33px;
     color: red;
@@ -45,6 +46,7 @@ justify-content: center;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
+
   h3 {
     margin: 0 100px;
     padding-bottom: 45px;
@@ -52,7 +54,7 @@ justify-content: center;
   }
 }
 
-#click-start, #click-new-game {
+#btn-click-start, #btn-click-new-game {
   width: 250px;
   height: 80px;
   font-size: 24px;
@@ -64,13 +66,17 @@ justify-content: center;
   margin-bottom: 50px;
 }
 
-#click-stone, #click-Paper, #click-scissors {
+#btn-click-stone, #btn-click-paper, #btn-click-scissors {
   margin-left: 10px;
   margin-right: 10px;
   margin-bottom: 35px;
   border: none;
   background: rgba(255, 255, 255, 0);
   cursor: pointer;
+}
+
+.off {
+  display: none;
 }
 
 @media (max-width: 768px) {

@@ -59,7 +59,7 @@
   font-size: 28px;
 }
 
-#click-start, #click-new-game {
+#btn-click-start, #btn-click-new-game {
   width: 250px;
   height: 80px;
   font-size: 24px;
@@ -71,13 +71,17 @@
   margin-bottom: 50px;
 }
 
-#click-stone, #click-Paper, #click-scissors {
+#btn-click-stone, #btn-click-paper, #btn-click-scissors {
   margin-left: 10px;
   margin-right: 10px;
   margin-bottom: 35px;
   border: none;
   background: rgba(255, 255, 255, 0);
   cursor: pointer;
+}
+
+.off {
+  display: none;
 }
 
 @media (max-width: 768px) {
